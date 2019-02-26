@@ -1,0 +1,21 @@
+{
+    "name": "Wemo",
+    "docs": "https://github.com/rl1131/udi-wemo-poly",
+    "type": "python3",
+    "executable": "wemo.py",
+    "install": "install.sh",
+    "shortPoll": "15",
+    "longPoll": "120",
+    "description": "Provide ISY support for Wemo devices via Polyglot.",
+    "notice": "Copyright 2019 Robert Lee.  Licensed under the terms of the MIT License.  All trademarks used herein are the property of their respective owners.",
+    "credits": [
+        {
+            "title": "udi-wemo-poly: A Polyglot v2 interface to Wemo devices",
+            "author": "Robert Lee",
+            "version": "0.1.0",
+            "date": "Feb 24, 2019",
+            "source": "https://github.com/rl1131/udi-wemo-poly",
+            "license": "https://github.com/rl1131/udi-wemo-poly/blob/master/LICENSE"
+        }
+    ]
+}
