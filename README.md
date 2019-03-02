@@ -13,6 +13,9 @@ git clone https://github.com/rl1131/udi-wemo-poly.git udi-wemo-poly
 cd udi-wemo-poly
 ./install.sh
 ```
+
+After that is complete use the Polyglot web interface to add the node server.
+
 ### Requirements and Attribution
 
 This node server is dependent Greg Dowling's [pywemo](https://github.com/pavoni/pywemo) Python module.
