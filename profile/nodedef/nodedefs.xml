@@ -4,16 +4,16 @@
     <nodeDef id="WEMO_CTRL" nls="CTRL">
         <editors />
         <sts>
-			<st id="ST" editor="BOOL" />
-		</sts>
+            <st id="ST" editor="BOOL" />
+        </sts>
         <cmds>
             <sends />
             <accepts>
-              <cmd id="DISCOVER" />
+                <cmd id="DISCOVER" />
             </accepts>
         </cmds>
     </nodeDef>
-	<!-- Wemo Switch Node -->
+    <!-- Wemo Switch Node -->
     <nodeDef id="WEMO_SWITCH" nls="SWITCH">
         <editors />
         <sts>
