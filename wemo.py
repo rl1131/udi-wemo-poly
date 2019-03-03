@@ -103,7 +103,7 @@ class WemoSwitch(polyinterface.Node):
         newv = 1 if self.st else 0
         self.setDriver('ST', newv)
 
-    def don(self, command):
+    def don(self, command=None):
         """ ISY Request the device be turned on """
         try:
             self.device.on()
@@ -116,7 +116,7 @@ class WemoSwitch(polyinterface.Node):
         self.setDriver('ST', 1)
         return True
 
-    def dof(self, command):
+    def dof(self, command=None):
         """ ISY Request the device be turned off """
         try:
             self.device.off()
@@ -129,7 +129,7 @@ class WemoSwitch(polyinterface.Node):
         self.setDriver('ST', 0)
         return True
 
-    def query(self, command):
+    def query(self, command=None):
         """ ISY Requested that we query the remote device """
         LOGGER.debug('query of {} requested'.format(self.device.name))
         self.ts = self._getstate()
