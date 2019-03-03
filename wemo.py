@@ -133,7 +133,6 @@ class WemoSwitch(polyinterface.Node):
         """ ISY Requested that we query the remote device """
         LOGGER.debug('query of {} requested'.format(self.device.name))
         self.ts = self._getstate()
-        self.st = rval
         self.updateInfo()
         self.reportDrivers()
         return True
