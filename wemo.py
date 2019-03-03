@@ -6,9 +6,12 @@ import sys
 import socket
 import logging
 import polyinterface
-import pywemo
 
 LOGGER = polyinterface.LOGGER
+LOGGER.info('Wemo node server running on Python version {}'.format(sys.version_info))
+
+import pywemo
+
 
 class Control(polyinterface.Controller):
     """ Polyglot Controller for Wemo Node Server """
