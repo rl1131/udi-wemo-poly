@@ -3,4 +3,19 @@
     <editor id="BOOL">
         <range uom="2" subset="0,1" />
     </editor>
+    <editor id="ONOFF">
+        <range uom="78" subset="0,100" />
+    </editor>
+    <editor id="PERCENT">
+        <range uom="51" min="0" max="100" prec="0" />
+    </editor>
+    <editor id="WATTS">
+        <range uom="73" />
+    </editor>
+    <editor id="KWATTSECONDS">
+        <range uom="102" />
+    </editor>
+    <editor id="DURATION" >
+        <range uom="58" prec="0" step="1"/>
+    </editor>
 </editors>

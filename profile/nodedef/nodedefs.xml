@@ -17,7 +17,7 @@
     <nodeDef id="WEMO_SWITCH" nls="SWITCH">
         <editors />
         <sts>
-            <st id="ST" editor="BOOL" />
+            <st id="ST"  editor="ONOFF" />
         </sts>
         <cmds>
             <sends>
@@ -27,7 +27,64 @@
             <accepts>
                 <cmd id="DON" />
                 <cmd id="DOF" />
+                <cmd id="DFON" />
+                <cmd id="DFOF" />
                 <cmd id="QUERY" />                
+            </accepts>
+        </cmds>
+    </nodeDef>
+    <!-- Wemo Dimmer Node -->
+    <nodeDef id="WEMO_DIMMER" nls="DIMMER">
+        <editors />
+        <sts>
+            <st id="ST"  editor="ONOFF" />
+            <st id="GV0" editor="PERCENT" />
+        </sts>
+        <cmds>
+            <sends>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+            </sends>
+            <accepts>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+                <cmd id="DFON" />
+                <cmd id="DFOF" />
+                <cmd id="BRT" />
+                <cmd id="DIM" />
+                <cmd id="QUERY" />
+            </accepts>
+        </cmds>
+    </nodeDef>
+    <!-- Wemo Insight Smart Plug Node -->
+    <nodeDef id="WEMO_INSIGHT" nls="INSIGHT">
+        <editors />
+        <sts>
+            <st id="ST"  editor="ONOFF" />
+            <st id="GV0" editor="DURATION" />    <!-- Time On -->
+            <st id="GV1" editor="WATTS" />       <!-- Watts Currently -->
+            <st id="GV2" editor="DURATION" />    <!-- Time On Today -->
+            <st id="GV3" editor="KWATTSECONDS" /> <!-- KWs Used Today -->
+            <!--
+            <st id="GV4" editor="DURATION" />    Total Time On
+            <st id="GV5" editor="WATTS" />       Total Watts Used
+            -->
+            <st id="GV6" editor="WATTS" />       <!-- Threshold in Watts -->
+            <st id="GV7" editor="BOOL" />        <!-- Currently Above Threshold? -->
+        </sts>
+        <cmds>
+            <sends>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+                <cmd id="GV10" />  <!-- Threshold triggered high -->
+                <cmd id="GV11" />  <!-- Threshold triggered low -->
+            </sends>
+            <accepts>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+                <cmd id="DFON" />
+                <cmd id="DFOF" />
+                <cmd id="QUERY" />
             </accepts>
         </cmds>
     </nodeDef>
