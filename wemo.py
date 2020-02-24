@@ -10,7 +10,7 @@ from time import sleep
 from datetime import datetime
 
 LOGGER = polyinterface.LOGGER
-LOGGER.info('Wemo Node Server version {} running on Python version {}'.format(sys.version_info))
+LOGGER.info('Wemo Node Server running on Python version {}'.format(sys.version_info))
 
 import pywemo
 
