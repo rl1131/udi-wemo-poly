@@ -10,7 +10,7 @@ from time import sleep
 from datetime import datetime
 
 LOGGER = polyinterface.LOGGER
-LOGGER.info('Wemo node server running on Python version {}'.format(sys.version_info))
+LOGGER.info('Wemo Node Server version {} running on Python version {}'.format(sys.version_info))
 
 import pywemo
 
@@ -48,21 +48,22 @@ class Control(polyinterface.Controller):
     def discover(self, command=None):
         devices = pywemo.discover_devices()
         for wemodev in devices:
-            LOGGER.info('Wemo Device {} of type {} found, checking for compatibility...'.format(wemodev.name, wemodev.device_type));
-            if wemodev.device_type in ['LightSwitch', 'Switch']:
-                LOGGER.info('Adding {} {} to ISY.'.format(wemodev.device_type, wemodev.name))
+            dtype = wemodev.__class__.__name__
+            LOGGER.info('Wemo Device {} of type {} found, checking for compatibility...'.format(wemodev.name, dtype));
+            if dtype in ['LightSwitch', 'Switch']:
+                LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
                 address = wemodev.mac.lower()
                 self.addNode(WemoSwitch(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
-            elif wemodev.device_type == 'Dimmer':
-                LOGGER.info('Adding {} {} to ISY.'.format(wemodev.device_type, wemodev.name))
+            elif dtype == 'Dimmer':
+                LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
                 address = wemodev.mac.lower()
                 self.addNode(WemoDimmer(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
-            elif wemodev.device_type == 'Insight':
-                LOGGER.info('Adding {} {} to ISY.'.format(wemodev.device_type, wemodev.name))
+            elif dtype == 'Insight':
+                LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
                 address = wemodev.mac.lower()
                 self.addNode(WemoInsight(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
             else:
-                LOGGER.warning('WARNING Device type {} is not currently supported.'.format(wemodev.name, wemodev.device_type));
+                LOGGER.warning('Device type {} is not currently supported.'.format(dtype));
 
     id = 'WEMO_CTRL'
     commands = {'DISCOVER': discover}
@@ -476,13 +477,13 @@ class WemoInsight(polyinterface.Node):
     
 if __name__ == "__main__":
     try:
-        LOGGER.debug("Getting Poly")
+        LOGGER.info("Wemo - Getting Poly")
         poly = polyinterface.Interface("Wemo")
-        LOGGER.debug("Starting Poly")
+        LOGGER.info("Starting Poly")
         poly.start()
-        LOGGER.debug("Getting Control")
+        LOGGER.info("Getting Control")
         wemo = Control(poly)
-        LOGGER.debug("Starting Control")
+        LOGGER.info("Starting Control")
         wemo.runForever()
     except (KeyboardInterrupt, SystemExit):
         sys.exit(0)
