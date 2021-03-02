@@ -14,7 +14,6 @@ LOGGER.info('Wemo Node Server running on Python version {}'.format(sys.version_i
 
 import pywemo
 
-
 class Control(polyinterface.Controller):
     """ Polyglot Controller for Wemo Node Server """
     def __init__(self, polyglot):

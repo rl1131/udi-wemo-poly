@@ -7,15 +7,15 @@
         <range uom="78" subset="0,100" />
     </editor>
     <editor id="PERCENT">
-        <range uom="51" min="0" max="100" prec="0" />
+        <range uom="51" min="0" max="100" prec="0" step="1" />
     </editor>
     <editor id="WATTS">
-        <range uom="73" />
+        <range uom="73" min="0" max="1800" prec="0" step="1" />
     </editor>
     <editor id="KWATTSECONDS">
-        <range uom="102" />
+        <range uom="102" min="0" max="2147483647" prec="0" step="1" />
     </editor>
     <editor id="DURATION" >
-        <range uom="58" prec="0" step="1"/>
+        <range uom="58" min="0" max="2147483647" prec="0" step="1"/>
     </editor>
 </editors>

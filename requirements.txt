@@ -1,2 +1,2 @@
 polyinterface>=2.0.29
-pywemo>=0.4.39
+pywemo>=0.4.41
