@@ -7,13 +7,13 @@
     "shortPoll": "60",
     "longPoll": "180",
     "description": "Provide ISY support for Wemo devices via Polyglot.",
-    "notice": "Copyright 2019 Robert Lee.  Licensed under the terms of the MIT License.  All trademarks used herein are the property of their respective owners.",
+    "notice": "Copyright 2021 Robert Lee.  Licensed under the terms of the MIT License.  All trademarks used herein are the property of their respective owners.",
     "credits": [
         {
             "title": "udi-wemo-poly: A Polyglot v2 interface to Wemo devices",
             "author": "Robert Lee (rl1131)",
-            "version": "0.2.1",
-            "date": "Mar 2, 2019",
+            "version": "0.2.2",
+            "date": "July 29, 2021",
             "source": "https://github.com/rl1131/udi-wemo-poly",
             "license": "https://github.com/rl1131/udi-wemo-poly/blob/master/LICENSE"
         }
