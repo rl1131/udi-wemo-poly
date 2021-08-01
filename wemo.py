@@ -22,16 +22,18 @@ class Control(polyinterface.Controller):
         self.address = 'wemons'
         self.primary = self.address
         self.subscription_registry = pywemo.SubscriptionRegistry()
-        LOGGER.info('Wemo Controler Initialized')
+        self.subscription_registry_started = False
+        LOGGER.info('Wemo Controller Initialized')
 
     def start(self):
         LOGGER.info('Starting ' + self.name)
         self.discover()
-        self.subscription_registry.start()
 
     def stop(self):
         LOGGER.info('Wemo NodeServer is stopping')
         self.subscription_registry.stop()
+        if self.subscription_registry_started:
+            self.subscription_registry_started = False
 
     def shortPoll(self):
         for node in self.nodes.values():
@@ -46,9 +48,12 @@ class Control(polyinterface.Controller):
 
     def discover(self, command=None):
         devices = pywemo.discover_devices()
+        if self.subscription_registry_started is False:
+            self.subscription_registry.start()
+            self.subscription_registry_started = True
         for wemodev in devices:
             dtype = wemodev.__class__.__name__
-            LOGGER.info('Wemo Device {} of type {} found, checking for compatibility...'.format(wemodev.name, dtype));
+            LOGGER.info('Wemo Device {} of type {} found.'.format(wemodev.name, dtype));
             # if dtype in ['LightSwitch', 'Switch', 'OutdoorPlug']:
             if issubclass(wemodev.__class__, pywemo.Switch):
                 LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
