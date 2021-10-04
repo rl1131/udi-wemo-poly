@@ -12,8 +12,8 @@
         {
             "title": "udi-wemo-poly: A Polyglot v2 interface to Wemo devices",
             "author": "Robert Lee (rl1131)",
-            "version": "0.2.3",
-            "date": "July 31, 2021",
+            "version": "0.2.4",
+            "date": "Oct 3, 2021",
             "source": "https://github.com/rl1131/udi-wemo-poly",
             "license": "https://github.com/rl1131/udi-wemo-poly/blob/master/LICENSE"
         }
