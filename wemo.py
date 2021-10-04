@@ -54,8 +54,13 @@ class Control(polyinterface.Controller):
         for wemodev in devices:
             dtype = wemodev.__class__.__name__
             LOGGER.info('Wemo Device {} of type {} found.'.format(wemodev.name, dtype));
+            #elif dtype == 'Insight':
+            if issubclass(wemodev.__class__, pywemo.Insight):
+                LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
+                address = wemodev.mac.lower()
+                self.addNode(WemoInsight(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
             # if dtype in ['LightSwitch', 'Switch', 'OutdoorPlug']:
-            if issubclass(wemodev.__class__, pywemo.Switch):
+            elif issubclass(wemodev.__class__, pywemo.Switch):
                 LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
                 address = wemodev.mac.lower()
                 self.addNode(WemoSwitch(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
@@ -64,11 +69,6 @@ class Control(polyinterface.Controller):
                 LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
                 address = wemodev.mac.lower()
                 self.addNode(WemoDimmer(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
-            #elif dtype == 'Insight':
-            elif issubclass(wemodev.__class__, pywemo.Insight):
-                LOGGER.info('Adding {} {} to ISY.'.format(dtype, wemodev.name))
-                address = wemodev.mac.lower()
-                self.addNode(WemoInsight(self, self.address, address, wemodev.name, wemodev, self.subscription_registry))
             else:
                 LOGGER.warning('Device type {} is not currently supported.'.format(dtype));
 
